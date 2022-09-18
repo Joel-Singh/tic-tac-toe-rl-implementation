@@ -1,0 +1,20 @@
+.cell {
+  background-color: white;
+}
+
+.board-container {
+  background-color: grey;
+  border: 5px solid grey;
+  gap: 5px;
+  display: grid;
+  grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+  height: 50vh;
+  width: 50vh;
+  margin-top: 10vh;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+}
