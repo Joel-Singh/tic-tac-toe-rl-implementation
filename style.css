@@ -1,6 +1,21 @@
 .cell {
   background-color: white;
   display: flex;
+  padding: 25%;
+}
+
+svg {
+  display: none;
+}
+
+.cell.o > .circle {
+  display: block;
+  fill: blue;
+}
+
+.cell.x > .cross {
+  display: block;
+  fill: red;
 }
 
 .board-container {
