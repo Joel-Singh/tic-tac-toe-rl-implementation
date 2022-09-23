@@ -52,13 +52,13 @@
     return { drawBoard, isWinner, gameBoard };
   })();
 
+  const getEmptyCellArray = () =>
+    document.querySelectorAll(".cell:not(.x):not(.o)");
   function createPlayer(symbol) {
     return { symbol };
   }
 
   const game = ((board, oPlayer, xPlayer) => {
-    const getEmptyCellArray = () =>
-      document.querySelectorAll(".cell:not(.x):not(.o)");
     const isGameDone = () =>
       board.isWinner(oPlayer.symbol) ||
       board.isWinner(xPlayer.symbol) ||
