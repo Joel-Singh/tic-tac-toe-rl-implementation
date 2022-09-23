@@ -19,9 +19,9 @@
     const drawBoard = () => {
       gameBoard.forEach((marking, index) => {
         if (marking === "o") {
-            getCell(index).classList.add("o");
+          getCell(index).classList.add("o");
         } else if (marking === "x") {
-            getCell(index).classList.add("x");
+          getCell(index).classList.add("x");
         }
       });
     };
