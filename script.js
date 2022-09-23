@@ -26,7 +26,7 @@
       });
     };
 
-    const checkForWinner = (symbol) => {
+    const isWinner = (symbol) => {
       const check = (index) => gameBoard[index] === symbol;
       const firstColCheck = check(0) && check(3) && check(6);
       const secondColCheck = check(1) && check(4) && check(7);
@@ -47,6 +47,6 @@
         secondDiagCheck
       );
     };
-    return { drawBoard, checkForWinner, gameBoard };
+    return { drawBoard, isWinner, gameBoard };
   })();
 })();
