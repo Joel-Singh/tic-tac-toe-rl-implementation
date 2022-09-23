@@ -52,7 +52,6 @@
     return { drawBoard, isWinner, gameBoard };
   })();
 
-
   function createPlayer(symbol) {
     const getEmptyCellArray = () => [
       ...document.querySelectorAll(".cell:not(.x):not(.o)"),
