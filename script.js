@@ -52,10 +52,11 @@
     return { drawBoard, isWinner, gameBoard };
   })();
 
-  const getEmptyCellArray = () =>
-    [...document.querySelectorAll(".cell:not(.x):not(.o)")];
 
   function createPlayer(symbol) {
+    const getEmptyCellArray = () => [
+      ...document.querySelectorAll(".cell:not(.x):not(.o)"),
+    ];
     return { symbol };
   }
 
