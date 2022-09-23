@@ -12,16 +12,15 @@
       "empty",
     ];
 
+    const getCell = (index) => {
+      return document.querySelector(`.cell[data-cell-index='${index}']`);
+    };
     const drawBoard = () => {
       gameBoard.forEach((marking, index) => {
         if (marking === "o") {
-          document
-            .querySelector(`.cell[data-cell-index='${index}']`)
-            .classList.add("o");
+            getCell(index).classList.add("o");
         } else if (marking === "x") {
-          document
-            .querySelector(`.cell[data-cell-index='${index}']`)
-            .classList.add("x");
+            getCell(index).classList.add("x");
         }
       });
     };
