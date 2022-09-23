@@ -15,6 +15,7 @@
     const getCell = (index) => {
       return document.querySelector(`.cell[data-cell-index='${index}']`);
     };
+
     const drawBoard = () => {
       gameBoard.forEach((marking, index) => {
         if (marking === "o") {
