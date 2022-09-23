@@ -16,7 +16,7 @@
       return document.querySelector(`.cell[data-cell-index='${index}']`);
     };
 
-    const isFilled = () => !board.includes('empty');
+    const isFilled = () => !board.includes("empty");
 
     const drawBoard = () => {
       gameBoard.forEach((marking, index) => {
@@ -53,6 +53,6 @@
   })();
 
   function createPlayer(symbol) {
-    return {symbol};
+    return { symbol };
   }
 })();
