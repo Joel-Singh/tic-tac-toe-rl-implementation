@@ -47,6 +47,6 @@
         secondDiagCheck
       );
     };
-    return { drawBoard, checkForWinner };
+    return { drawBoard, checkForWinner, gameBoard };
   })();
 })();
