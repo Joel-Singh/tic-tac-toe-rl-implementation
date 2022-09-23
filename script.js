@@ -51,4 +51,8 @@
     };
     return { drawBoard, isWinner, gameBoard };
   })();
+
+  function createPlayer(symbol) {
+    return {symbol};
+  }
 })();
