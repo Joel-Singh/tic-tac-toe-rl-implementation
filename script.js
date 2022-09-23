@@ -53,7 +53,8 @@
   })();
 
   const getEmptyCellArray = () =>
-    document.querySelectorAll(".cell:not(.x):not(.o)");
+    [...document.querySelectorAll(".cell:not(.x):not(.o)")];
+
   function createPlayer(symbol) {
     return { symbol };
   }
