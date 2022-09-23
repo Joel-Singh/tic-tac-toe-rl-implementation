@@ -49,6 +49,4 @@
     };
     return { drawBoard, checkForWinner };
   })();
-
-  board.drawBoard();
 })();
