@@ -56,7 +56,31 @@
     const getEmptyCellArray = () => [
       ...document.querySelectorAll(".cell:not(.x):not(.o)"),
     ];
-    return { symbol };
+
+    const startTurn = () => {
+      isTurnDone = false;
+      const cellClickFunc = (cell, index) => {
+        board.gameBoard[index] = symbol;
+        isTurnDone = true;
+      };
+
+      getEmptyCellArray().forEach((cell, index) => {
+        cell.addEventListener("click", cellClickFunc.bind(null, cell, index));
+      });
+
+      const loopingFunction = () => {
+        if (isTurnDone) {
+          board.drawBoard();
+          [...document.querySelectorAll(".cell")].forEach((cell) =>
+            cell.removeEventListener("click", cellClickFunc)
+          );
+        } else {
+          setTimeout(loopingFunction, 100);
+        }
+      };
+      loopingFunction();
+    };
+    return { symbol, startTurn };
   }
 
   const game = ((oPlayer, xPlayer) => {
