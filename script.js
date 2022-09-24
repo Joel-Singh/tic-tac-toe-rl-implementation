@@ -59,10 +59,10 @@
     return { symbol };
   }
 
-  const game = ((board, oPlayer, xPlayer) => {
+  const game = ((oPlayer, xPlayer) => {
     const isGameDone = () =>
       board.isWinner(oPlayer.symbol) ||
       board.isWinner(xPlayer.symbol) ||
       board.isFilled();
-  })(board, createPlayer("o"), createPlayer("x"));
+  })(createPlayer("o"), createPlayer("x"));
 })();
