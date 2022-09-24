@@ -26,11 +26,13 @@ svg {
   grid-template: repeat(3, 1fr) / repeat(3, 1fr);
   height: 50vh;
   width: 50vh;
-  margin-top: 10vh;
+  margin-top: -10vh;
 }
 
 body {
   display: flex;
   justify-content: center;
+  align-items: center;
   height: 100vh;
+  flex-direction: column;
 }
