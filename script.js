@@ -57,6 +57,8 @@
       ...document.querySelectorAll(".cell:not(.x):not(.o)"),
     ];
 
+    let isTurnDone = true;
+
     const startTurn = () => {
       isTurnDone = false;
       const cellClickFunc = (cell, index) => {
@@ -80,7 +82,7 @@
       };
       loopingFunction();
     };
-    return { symbol, startTurn };
+    return { symbol, startTurn, isTurnDone };
   }
 
   const game = ((oPlayer, xPlayer) => {
