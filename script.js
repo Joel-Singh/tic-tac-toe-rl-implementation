@@ -16,7 +16,7 @@
       return document.querySelector(`.cell[data-cell-index='${index}']`);
     };
 
-    const isFilled = () => !board.includes("empty");
+    const isFilled = () => !gameBoard.includes("empty");
 
     const drawBoard = () => {
       gameBoard.forEach((marking, index) => {
