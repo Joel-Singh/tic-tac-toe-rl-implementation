@@ -61,21 +61,22 @@
 
     const startTurn = () => {
       isTurnDone = false;
+      const abortController = new AbortController();
       const cellClickFunc = (cell, index) => {
         board.gameBoard[index] = symbol;
         isTurnDone = true;
+        abortController.abort();
       };
 
       getEmptyCellArray().forEach((cell, index) => {
-        cell.addEventListener("click", cellClickFunc.bind(null, cell, index));
+        cell.addEventListener("click", cellClickFunc.bind(null, cell, index), {
+          signal: abortController.signal,
+        });
       });
 
       const loopingFunction = () => {
         if (isTurnDone) {
           board.drawBoard();
-          [...document.querySelectorAll(".cell")].forEach((cell) =>
-            cell.removeEventListener("click", cellClickFunc)
-          );
         } else {
           setTimeout(loopingFunction, 100);
         }
