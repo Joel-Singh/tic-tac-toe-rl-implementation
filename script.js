@@ -52,7 +52,7 @@ const board = (() => {
   const editBoard = (index, symbol) => {
     gameBoard[index] = symbol;
     drawBoard();
-  }
+  };
   return { isWinner, isFilled, editBoard };
 })();
 
@@ -69,21 +69,20 @@ function createPlayer(symbol) {
 
   const startTurn = async () => {
     isTurnDone = false;
-    const abortController = new AbortController();
     const cellClickFunc = (event) => {
       board.editBoard(event.target.getAttribute("data-cell-index"), symbol);
       isTurnDone = true;
     };
 
     getEmptyCellArray().forEach((cell) => {
-      cell.addEventListener("click", cellClickFunc, {
-        signal: abortController.signal,
-      });
+      cell.addEventListener("click", cellClickFunc);
     });
 
     while (true) {
       if (isTurnDone) {
-        abortController.abort();
+        [...document.querySelectorAll(".cell")].forEach((e) =>
+          e.removeEventListener("click", cellClickFunc)
+        );
         break;
       } else {
         await sleep(100);
