@@ -118,10 +118,13 @@ const game = ((oPlayer, xPlayer) => {
       }
     }
 
-    console.log("game finsihed");
     board.reset();
+    document.querySelector("#start-game").style.display = "block";
   };
   return { start };
 })(createPlayer("o"), createPlayer("x"));
 
-game.start();
+document.querySelector("#start-game").addEventListener('click', (e) =>{
+  game.start();
+  e.target.style.display = "none";
+})
