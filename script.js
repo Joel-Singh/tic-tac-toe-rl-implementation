@@ -49,7 +49,7 @@
         secondDiagCheck
       );
     };
-    return { drawBoard, isWinner, gameBoard };
+    return { drawBoard, isWinner, gameBoard, isFilled };
   })();
 
   function createPlayer(symbol) {
