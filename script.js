@@ -90,5 +90,31 @@
       board.isWinner(oPlayer.symbol) ||
       board.isWinner(xPlayer.symbol) ||
       board.isFilled();
+
+    const start = async () => {
+      function sleep(ms) {
+        return new Promise((resolve) => setTimeout(resolve, ms));
+      }
+
+      while (true) {
+        oPlayer.startTurn();
+        while (true) {
+          await sleep(100);
+          if (oPlayer.isTurnDone) {
+            break;
+          }
+        }
+        xPlayer.startTurn();
+        while (true) {
+          await sleep(100);
+          if (xPlayer.isTurnDone) {
+            break;
+          }
+        }
+      }
+    };
+    return { start };
   })(createPlayer("o"), createPlayer("x"));
+
+  game.start();
 })();
