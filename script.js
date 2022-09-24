@@ -121,9 +121,9 @@ let game = (oPlayer, xPlayer) => {
     let winnerText = document.querySelector("#winner-text");
     winnerText.style.display = "block";
     if (board.isWinner(oPlayer.symbol)) {
-      winnerText.innerHTML = "The O player has won";
+      winnerText.innerHTML = `${oPlayer.name} has won`;
     } else if (board.isWinner(xPlayer.symbol)) {
-      winnerText.innerHTML = "The X player has won";
+      winnerText.innerHTML = `${xPlayer.name} has won`;
     } else if (board.isFilled) {
       winnerText.innerHTML = "TIE!";
     }
