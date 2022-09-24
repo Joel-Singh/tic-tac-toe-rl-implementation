@@ -58,13 +58,16 @@ function createPlayer(symbol) {
 
   let isTurnDone = true;
 
-  const startTurn = () => {
+  function sleep(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
+
+  const startTurn = async () => {
     isTurnDone = false;
     const abortController = new AbortController();
     const cellClickFunc = (cell, index) => {
       board.gameBoard[index] = symbol;
       isTurnDone = true;
-      abortController.abort();
     };
 
     getEmptyCellArray().forEach((cell, index) => {
@@ -73,14 +76,15 @@ function createPlayer(symbol) {
       });
     });
 
-    const loopingFunction = () => {
+    while (true) {
       if (isTurnDone) {
         board.drawBoard();
+        abortController.abort();
+        break;
       } else {
-        setTimeout(loopingFunction, 100);
+        await sleep(100);
       }
-    };
-    loopingFunction();
+    }
   };
   return { symbol, startTurn, isTurnDone };
 }
@@ -92,25 +96,9 @@ const game = ((oPlayer, xPlayer) => {
     board.isFilled();
 
   const start = async () => {
-    function sleep(ms) {
-      return new Promise((resolve) => setTimeout(resolve, ms));
-    }
-
     while (true) {
-      oPlayer.startTurn();
-      while (true) {
-        await sleep(100);
-        if (oPlayer.isTurnDone) {
-          break;
-        }
-      }
-      xPlayer.startTurn();
-      while (true) {
-        await sleep(100);
-        if (xPlayer.isTurnDone) {
-          break;
-        }
-      }
+      await oPlayer.startTurn();
+      await xPlayer.startTurn();
     }
   };
   return { start };
