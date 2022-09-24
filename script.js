@@ -23,6 +23,9 @@ const board = (() => {
         getCell(index).classList.add("o");
       } else if (marking === "x") {
         getCell(index).classList.add("x");
+      } else if (marking === "empty") {
+        getCell(index).classList.remove("x")
+        getCell(index).classList.remove("o")
       }
     });
   };
