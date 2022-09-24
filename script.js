@@ -48,7 +48,12 @@ const board = (() => {
       secondDiagCheck
     );
   };
-  return { drawBoard, isWinner, gameBoard, isFilled };
+
+  const editBoard = (index, symbol) => {
+    gameBoard[index] = symbol;
+    drawBoard();
+  }
+  return { isWinner, isFilled, editBoard };
 })();
 
 function createPlayer(symbol) {
@@ -66,7 +71,7 @@ function createPlayer(symbol) {
     isTurnDone = false;
     const abortController = new AbortController();
     const cellClickFunc = (cell, index) => {
-      board.gameBoard[index] = symbol;
+      board.editBoard(index, symbol);
       isTurnDone = true;
     };
 
@@ -78,7 +83,6 @@ function createPlayer(symbol) {
 
     while (true) {
       if (isTurnDone) {
-        board.drawBoard();
         abortController.abort();
         break;
       } else {
