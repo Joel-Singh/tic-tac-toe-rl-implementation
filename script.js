@@ -64,7 +64,7 @@ const board = (() => {
   return { isWinner, isFilled, editBoard, reset };
 })();
 
-function createPlayer(symbol) {
+function createPlayer(symbol, name) {
   const getEmptyCellArray = () => [
     ...document.querySelectorAll(".cell:not(.x):not(.o)"),
   ];
@@ -97,10 +97,10 @@ function createPlayer(symbol) {
       }
     }
   };
-  return { symbol, startTurn, isTurnDone };
+  return { symbol, name, startTurn, isTurnDone };
 }
 
-const game = ((oPlayer, xPlayer) => {
+let game = (oPlayer, xPlayer) => {
   const isGameDone = () =>
     board.isWinner(oPlayer.symbol) ||
     board.isWinner(xPlayer.symbol) ||
@@ -131,10 +131,24 @@ const game = ((oPlayer, xPlayer) => {
     document.querySelector("#start-game").style.display = "block";
   };
   return { start };
-})(createPlayer("o"), createPlayer("x"));
+};
 
-document.querySelector("#start-game").addEventListener("click", (e) => {
-  game.start();
-  e.target.style.display = "none";
-  document.querySelector("#winner-text").style.display = "none";
+function setUpPage() {
+  document.querySelector(".game-elements").style.display = "none";
+  document.querySelector("#start-game").addEventListener("click", (e) => {
+    game.start();
+    e.target.style.display = "none";
+    document.querySelector("#winner-text").style.display = "none";
+  });
+}
+
+setUpPage();
+
+document.querySelector("#name-submission").addEventListener("click", () => {
+  game = game(
+    createPlayer("o", document.querySelector("#o-name").value),
+    createPlayer("x", document.querySelector("#x-name").value)
+  );
+  document.querySelector(".welcome-screen").style.display = "none";
+  document.querySelector(".game-elements").style.display = "flex";
 });
