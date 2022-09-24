@@ -101,8 +101,16 @@ const game = ((oPlayer, xPlayer) => {
   const start = async () => {
     while (true) {
       await oPlayer.startTurn();
+      if (isGameDone()) {
+        break;
+      }
       await xPlayer.startTurn();
+      if (isGameDone()) {
+        break;
+      }
     }
+
+    console.log("game finsihed");
   };
   return { start };
 })(createPlayer("o"), createPlayer("x"));
