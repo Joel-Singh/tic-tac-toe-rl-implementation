@@ -29,11 +29,11 @@ svg {
   margin-top: -10vh;
 }
 
-body {
+.game-elements {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 95vh;
   flex-direction: column;
 }
 
