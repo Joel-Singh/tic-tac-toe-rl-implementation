@@ -118,6 +118,15 @@ const game = ((oPlayer, xPlayer) => {
       }
     }
 
+    let winnerText = document.querySelector("#winner-text");
+    winnerText.style.display = "block";
+    if (board.isWinner(oPlayer.symbol)) {
+      winnerText.innerHTML = "The O player has won";
+    } else if (board.isWinner(xPlayer.symbol)) {
+      winnerText.innerHTML = "The X player has won";
+    } else if (board.isFilled) {
+      winnerText.innerHTML = "TIE!";
+    }
     board.reset();
     document.querySelector("#start-game").style.display = "block";
   };
@@ -127,4 +136,5 @@ const game = ((oPlayer, xPlayer) => {
 document.querySelector("#start-game").addEventListener("click", (e) => {
   game.start();
   e.target.style.display = "none";
+  document.querySelector("#winner-text").style.display = "none";
 });
