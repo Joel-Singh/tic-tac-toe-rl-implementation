@@ -1,4 +1,3 @@
-(function tictactoe() {
   const board = (() => {
     const gameBoard = [
       "empty",
@@ -118,4 +117,3 @@
   })(createPlayer("o"), createPlayer("x"));
 
   game.start();
-})();
