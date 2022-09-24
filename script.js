@@ -53,7 +53,12 @@ const board = (() => {
     gameBoard[index] = symbol;
     drawBoard();
   };
-  return { isWinner, isFilled, editBoard };
+
+  const reset = () => {
+    gameBoard.fill('empty');
+    drawBoard();
+  }
+  return { isWinner, isFilled, editBoard, reset };
 })();
 
 function createPlayer(symbol) {
@@ -111,6 +116,7 @@ const game = ((oPlayer, xPlayer) => {
     }
 
     console.log("game finsihed");
+    board.reset();
   };
   return { start };
 })(createPlayer("o"), createPlayer("x"));
