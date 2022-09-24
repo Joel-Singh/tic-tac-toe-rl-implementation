@@ -70,13 +70,13 @@ function createPlayer(symbol) {
   const startTurn = async () => {
     isTurnDone = false;
     const abortController = new AbortController();
-    const cellClickFunc = (cell, index) => {
-      board.editBoard(index, symbol);
+    const cellClickFunc = (event) => {
+      board.editBoard(event.target.getAttribute("data-cell-index"), symbol);
       isTurnDone = true;
     };
 
-    getEmptyCellArray().forEach((cell, index) => {
-      cell.addEventListener("click", cellClickFunc.bind(null, cell, index), {
+    getEmptyCellArray().forEach((cell) => {
+      cell.addEventListener("click", cellClickFunc, {
         signal: abortController.signal,
       });
     });
