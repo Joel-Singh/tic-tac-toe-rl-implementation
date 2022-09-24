@@ -24,8 +24,8 @@ const board = (() => {
       } else if (marking === "x") {
         getCell(index).classList.add("x");
       } else if (marking === "empty") {
-        getCell(index).classList.remove("x")
-        getCell(index).classList.remove("o")
+        getCell(index).classList.remove("x");
+        getCell(index).classList.remove("o");
       }
     });
   };
@@ -58,9 +58,9 @@ const board = (() => {
   };
 
   const reset = () => {
-    gameBoard.fill('empty');
+    gameBoard.fill("empty");
     drawBoard();
-  }
+  };
   return { isWinner, isFilled, editBoard, reset };
 })();
 
@@ -124,7 +124,7 @@ const game = ((oPlayer, xPlayer) => {
   return { start };
 })(createPlayer("o"), createPlayer("x"));
 
-document.querySelector("#start-game").addEventListener('click', (e) =>{
+document.querySelector("#start-game").addEventListener("click", (e) => {
   game.start();
   e.target.style.display = "none";
-})
+});
