@@ -115,5 +115,3 @@ const game = ((oPlayer, xPlayer) => {
   };
   return { start };
 })(createPlayer("o"), createPlayer("x"));
-
-game.start();
