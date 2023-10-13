@@ -1,3 +1,11 @@
+:root {
+  --sepia: #eadbcb;
+}
+
+body {
+  background-color: var(--sepia);
+}
+
 .cell {
   background-color: white;
   display: flex;
