@@ -118,7 +118,7 @@ let game = (oPlayer, xPlayer) => {
       }
     }
 
-    let winnerText = document.querySelector("#winner-text");
+    let winnerText: HTMLElement = document.querySelector("#winner-text");
     winnerText.style.display = "block";
     if (board.isWinner(oPlayer.symbol)) {
       winnerText.innerHTML = `${oPlayer.name} has won`;
@@ -128,27 +128,33 @@ let game = (oPlayer, xPlayer) => {
       winnerText.innerHTML = "TIE!";
     }
     board.reset();
-    document.querySelector("#start-game").style.display = "block";
+    (document.querySelector("#start-game") as HTMLElement).style.display = "block";
   };
   return { start };
 };
 
 function setUpPage() {
-  document.querySelector(".game-elements").style.display = "none";
+  (document.querySelector(".game-elements") as HTMLElement).style.display = "none";
   document.querySelector("#start-game").addEventListener("click", (e) => {
+    // @ts-ignore
     game.start();
-    e.target.style.display = "none";
-    document.querySelector("#winner-text").style.display = "none";
+    (e.target as HTMLElement).style.display = "none";
+    (document.querySelector("#winner-text") as HTMLElement).style.display = "none";
   });
 }
 
 setUpPage();
 
 document.querySelector("#name-submission").addEventListener("click", () => {
+  //@ts-ignore
   game = game(
+    //@ts-ignore
     createPlayer("o", document.querySelector("#o-name").value),
+    //@ts-ignore
     createPlayer("x", document.querySelector("#x-name").value)
   );
+  //@ts-ignore
   document.querySelector(".welcome-screen").style.display = "none";
+  //@ts-ignore
   document.querySelector(".game-elements").style.display = "flex";
 });
