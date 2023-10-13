@@ -5,12 +5,19 @@
   "main": "script.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "./build.sh"
+    "build": "./build.sh",
+    "prestart": "npm run build",
+    "start": "http-server ./dist -c-1",
+    "start:dev": "nodemon --ext ts,css,html --ignore './dist/*'  --exec 'npm run start'"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "tsc": "^2.0.4",
     "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "http-server": "^14.1.1",
+    "nodemon": "^3.0.1"
   }
 }
