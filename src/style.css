@@ -49,6 +49,20 @@ svg {
   margin-top: -10vh;
 }
 
+.welcome-screen {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    margin-top: 10vh;
+    height: 30vh;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+}
+
+.welcome-screen__submit-names {
+  width: 50%;
+}
+
 .game-elements {
   display: flex;
   justify-content: center;
