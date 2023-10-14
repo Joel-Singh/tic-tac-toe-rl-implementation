@@ -1,9 +1,5 @@
-:root {
-  --sepia: #eadbcb;
-}
-
 body {
-  background-color: var(--sepia);
+  background-color: #eadbcb;
 }
 
 .cell {
@@ -57,6 +53,12 @@ input, button {
     transition: background-color 0.3s ease-in-out;
     padding: 10px 20px;
     margin: 5px;
+}
+
+button {
+  border-color: black;
+  border-style: ridge;
+  border-width: 3px;
 }
 
 input:hover, button:hover {
