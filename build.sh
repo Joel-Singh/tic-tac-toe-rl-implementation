@@ -12,6 +12,11 @@ compileTsFiles() {
   npx tsc
 }
 
+compilePug() {
+  npx pug ./src/pug --out ./dist/
+}
+
 cleanDistDir
 copyAllFilesExceptTsToDist
 compileTsFiles
+compilePug
