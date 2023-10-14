@@ -8,7 +8,7 @@
     "build": "./build.sh",
     "prestart": "npm run build",
     "start": "http-server ./dist -c-1",
-    "start:dev": "nodemon --ext ts,css,html,pug --ignore './dist/*'  --exec 'npm run start'"
+    "start:dev": "nodemon --ext ts,css,html,pug,json --ignore './dist/*'  --exec 'npm run start'"
   },
   "author": "",
   "license": "ISC",
