@@ -2,45 +2,6 @@ body {
   background-color: #eadbcb;
 }
 
-.cell {
-  background-color: white;
-  display: flex;
-  padding: 25%;
-}
-
-svg {
-  display: none;
-}
-
-.cell.o > .circle {
-  display: block;
-  fill: blue;
-}
-
-.cell.x > .cross {
-  display: block;
-  fill: red;
-}
-
-.board-container {
-  background-color: grey;
-  border: 5px solid grey;
-  gap: 5px;
-  display: grid;
-  grid-template: repeat(3, 1fr) / repeat(3, 1fr);
-  height: 50vh;
-  width: 50vh;
-  margin-top: -10vh;
-}
-
-.game-elements {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 95vh;
-  flex-direction: column;
-}
-
 input, button {
     background-color: #F0F0F0;
     border: none;
@@ -71,4 +32,43 @@ input:active, button:active {
 
 button:before {
     content: url('icon.png');
+}
+
+svg {
+  display: none;
+}
+
+.board-container {
+  background-color: grey;
+  border: 5px solid grey;
+  gap: 5px;
+  display: grid;
+  grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+  height: 50vh;
+  width: 50vh;
+  margin-top: -10vh;
+}
+
+.game-elements {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 95vh;
+  flex-direction: column;
+}
+
+.cell {
+  background-color: white;
+  display: flex;
+  padding: 25%;
+}
+
+.cell.o > .circle {
+  display: block;
+  fill: blue;
+}
+
+.cell.x > .cross {
+  display: block;
+  fill: red;
 }
