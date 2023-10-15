@@ -18,9 +18,9 @@ function intializeGame() {
     board
   );
   //@ts-ignore
-  document.querySelector(".welcome-screen").style.display = "none";
+  document.querySelector("#welcome-screen").style.display = "none";
   //@ts-ignore
-  document.querySelector(".game-elements").style.display = "flex";
+  document.querySelector("#game-elements").style.display = "flex";
 
 }
 

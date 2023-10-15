@@ -49,7 +49,7 @@ svg {
   margin-top: -10vh;
 }
 
-.welcome-screen {
+#welcome-screen {
     display: grid;
     grid-template-rows: 1fr 1fr;
     margin-top: 10vh;
