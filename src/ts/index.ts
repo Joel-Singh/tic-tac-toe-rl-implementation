@@ -1,5 +1,13 @@
 import Board from "./Board.js";
-import { gameElements, gameStartBtn, nameSubmission, oInput, welcomeScreen, xInput } from "./Elements.js";
+import {
+  gameElements,
+  gameStartBtn,
+  nameSubmission,
+  oInput,
+  welcomeScreen,
+  welcomeScreenNameErrors,
+  xInput
+} from "./Elements.js";
 import Game from "./Game.js";
 import Player from "./Player.js";
 const board = Board()
@@ -13,14 +21,18 @@ function startGame(e: Event) {
 }
 
 function intializeGame() {
+  const inputsEmpty = oInput.value === '' || xInput.value === '';
+  if (inputsEmpty) {
+    welcomeScreenNameErrors.textContent = 'Names need to be filled in'
+    return
+  }
+
   game = Game(
     Player("o", oInput.value, board),
     Player("x", xInput.value, board),
     board
   );
-  //@ts-ignore
   welcomeScreen.style.display = "none";
-  //@ts-ignore
   gameElements.style.display = "flex";
 
 }
