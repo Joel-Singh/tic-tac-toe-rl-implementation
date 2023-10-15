@@ -2,7 +2,7 @@ import Board from "./Board.js";
 import Game from "./Game.js";
 const board = Board()
 
-function createPlayer(symbol, name) {
+function createPlayer(symbol: 'o' | 'x', name) {
   const getEmptyCellArray = () => [
     ...document.querySelectorAll(".cell:not(.x):not(.o)"),
   ];
