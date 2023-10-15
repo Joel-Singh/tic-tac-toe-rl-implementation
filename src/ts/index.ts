@@ -13,8 +13,8 @@ function startGame(e: Event) {
 
 function intializeGame() {
   game = Game(
-    Player("o", (document.querySelector(".welcome-screen__name-input__o") as HTMLInputElement).value, board),
-    Player("x", (document.querySelector(".welcome-screen__name-input__x") as HTMLInputElement).value, board),
+    Player("o", (document.querySelector("#welcome-screen__name-input__o") as HTMLInputElement).value, board),
+    Player("x", (document.querySelector("#welcome-screen__name-input__x") as HTMLInputElement).value, board),
     board
   );
   //@ts-ignore
