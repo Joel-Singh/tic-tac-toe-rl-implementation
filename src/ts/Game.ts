@@ -1,4 +1,5 @@
 import { BoardType } from "./Board";
+import { winnerText } from "./Elements.js";
 
 export default function Game(oPlayer, xPlayer, board: BoardType) {
   const isGameDone = () =>
@@ -18,7 +19,6 @@ export default function Game(oPlayer, xPlayer, board: BoardType) {
       }
     }
 
-    let winnerText: HTMLElement = document.querySelector("#winner-text");
     winnerText.style.display = "block";
     if (board.isWinner(oPlayer.symbol)) {
       winnerText.innerHTML = `${oPlayer.name} has won`;
