@@ -5,33 +5,34 @@ export default function Player(symbol: 'o' | 'x', name, board: BoardType) {
     ...document.querySelectorAll(".cell:not(.x):not(.o)"),
   ];
 
-  let isTurnDone = true;
+  const getAllCellsArray = () => [
+    ...document.querySelectorAll(".cell"),
+  ]
 
-  function sleep(ms) {
-    return new Promise((resolve) => setTimeout(resolve, ms));
+  function addClickEventToEmptyCells(clickEvent: EventListener) {
+    getEmptyCellArray().forEach((cell) => {
+      cell.addEventListener("click", clickEvent);
+    });
+  }
+
+  function removeClickEventFromCells(clickEvent: EventListener) {
+    getAllCellsArray().forEach((e) =>
+      e.removeEventListener("click", clickEvent)
+    );
   }
 
   const startTurn = async () => {
-    isTurnDone = false;
-    const cellClickFunc = (event) => {
-      board.editBoard(event.target.getAttribute("data-cell-index"), symbol);
-      isTurnDone = true;
-    };
+    return new Promise<void>((resolve) => {
+      addClickEventToEmptyCells(handleCellClick)
 
-    getEmptyCellArray().forEach((cell) => {
-      cell.addEventListener("click", cellClickFunc);
-    });
-
-    while (true) {
-      if (isTurnDone) {
-        [...document.querySelectorAll(".cell")].forEach((e) =>
-          e.removeEventListener("click", cellClickFunc)
-        );
-        break;
-      } else {
-        await sleep(100);
+      function handleCellClick(event: Event) {
+        const cell = event.target as HTMLElement
+        const cellIndex = cell.getAttribute("data-cell-index")
+        board.editBoard(cellIndex, symbol)
+        removeClickEventFromCells(handleCellClick)
+        resolve();
       }
-    }
+    })
   };
-  return { symbol, name, startTurn, isTurnDone };
+  return { symbol, name, startTurn };
 }
