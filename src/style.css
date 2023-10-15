@@ -63,7 +63,7 @@ svg {
   width: 50%;
 }
 
-.game-elements {
+#game-elements {
   display: flex;
   justify-content: center;
   align-items: center;

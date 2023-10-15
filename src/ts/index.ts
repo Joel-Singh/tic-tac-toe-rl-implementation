@@ -24,6 +24,6 @@ function intializeGame() {
 
 }
 
-(document.querySelector(".game-elements") as HTMLElement).style.display = "none";
+(document.querySelector("#game-elements") as HTMLElement).style.display = "none";
 document.querySelector("#start-game").addEventListener("click", startGame);
 document.querySelector("#name-submission").addEventListener("click", intializeGame);
