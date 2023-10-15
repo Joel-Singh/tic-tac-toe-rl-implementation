@@ -11,10 +11,7 @@ function startGame(e: Event) {
   (document.querySelector("#winner-text") as HTMLElement).style.display = "none";
 }
 
-(document.querySelector(".game-elements") as HTMLElement).style.display = "none";
-document.querySelector("#start-game").addEventListener("click", startGame);
-
-document.querySelector("#name-submission").addEventListener("click", () => {
+function intializeGame() {
   game = Game(
     Player("o", (document.querySelector("#o-name") as HTMLInputElement).value, board),
     Player("x", (document.querySelector("#x-name") as HTMLInputElement).value, board),
@@ -24,4 +21,9 @@ document.querySelector("#name-submission").addEventListener("click", () => {
   document.querySelector(".welcome-screen").style.display = "none";
   //@ts-ignore
   document.querySelector(".game-elements").style.display = "flex";
-});
+
+}
+
+(document.querySelector(".game-elements") as HTMLElement).style.display = "none";
+document.querySelector("#start-game").addEventListener("click", startGame);
+document.querySelector("#name-submission").addEventListener("click", intializeGame);
