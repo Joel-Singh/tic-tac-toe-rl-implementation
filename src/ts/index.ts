@@ -1,42 +1,7 @@
 import Board from "./Board.js";
 import Game from "./Game.js";
+import Player from "./Player.js";
 const board = Board()
-
-function createPlayer(symbol: 'o' | 'x', name) {
-  const getEmptyCellArray = () => [
-    ...document.querySelectorAll(".cell:not(.x):not(.o)"),
-  ];
-
-  let isTurnDone = true;
-
-  function sleep(ms) {
-    return new Promise((resolve) => setTimeout(resolve, ms));
-  }
-
-  const startTurn = async () => {
-    isTurnDone = false;
-    const cellClickFunc = (event) => {
-      board.editBoard(event.target.getAttribute("data-cell-index"), symbol);
-      isTurnDone = true;
-    };
-
-    getEmptyCellArray().forEach((cell) => {
-      cell.addEventListener("click", cellClickFunc);
-    });
-
-    while (true) {
-      if (isTurnDone) {
-        [...document.querySelectorAll(".cell")].forEach((e) =>
-          e.removeEventListener("click", cellClickFunc)
-        );
-        break;
-      } else {
-        await sleep(100);
-      }
-    }
-  };
-  return { symbol, name, startTurn, isTurnDone };
-}
 
 let game;
 
@@ -54,10 +19,8 @@ setUpPage();
 
 document.querySelector("#name-submission").addEventListener("click", () => {
   game = Game(
-    //@ts-ignore
-    createPlayer("o", document.querySelector("#o-name").value),
-    //@ts-ignore
-    createPlayer("x", document.querySelector("#x-name").value),
+    Player("o", (document.querySelector("#o-name") as HTMLInputElement).value, board),
+    Player("x", (document.querySelector("#x-name") as HTMLInputElement).value, board),
     board
   );
   //@ts-ignore
