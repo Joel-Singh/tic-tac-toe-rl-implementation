@@ -24,7 +24,7 @@ export default function Game(oPlayer, xPlayer, board: BoardType) {
       winnerText.innerHTML = `${oPlayer.name} has won`;
     } else if (board.isWinner(xPlayer.symbol)) {
       winnerText.innerHTML = `${xPlayer.name} has won`;
-    } else if (board.isFilled) {
+    } else if (board.isFilled()) {
       winnerText.innerHTML = "TIE!";
     }
     board.reset();
