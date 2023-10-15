@@ -1,4 +1,5 @@
 import Board from "./Board.js";
+import Game from "./Game.js";
 const board = Board()
 
 function createPlayer(symbol, name) {
@@ -37,38 +38,7 @@ function createPlayer(symbol, name) {
   return { symbol, name, startTurn, isTurnDone };
 }
 
-let game = (oPlayer, xPlayer) => {
-  const isGameDone = () =>
-    board.isWinner(oPlayer.symbol) ||
-    board.isWinner(xPlayer.symbol) ||
-    board.isFilled();
-
-  const start = async () => {
-    while (true) {
-      await oPlayer.startTurn();
-      if (isGameDone()) {
-        break;
-      }
-      await xPlayer.startTurn();
-      if (isGameDone()) {
-        break;
-      }
-    }
-
-    let winnerText: HTMLElement = document.querySelector("#winner-text");
-    winnerText.style.display = "block";
-    if (board.isWinner(oPlayer.symbol)) {
-      winnerText.innerHTML = `${oPlayer.name} has won`;
-    } else if (board.isWinner(xPlayer.symbol)) {
-      winnerText.innerHTML = `${xPlayer.name} has won`;
-    } else if (board.isFilled) {
-      winnerText.innerHTML = "TIE!";
-    }
-    board.reset();
-    (document.querySelector("#start-game") as HTMLElement).style.display = "block";
-  };
-  return { start };
-};
+let game;
 
 function setUpPage() {
   (document.querySelector(".game-elements") as HTMLElement).style.display = "none";
@@ -83,12 +53,12 @@ function setUpPage() {
 setUpPage();
 
 document.querySelector("#name-submission").addEventListener("click", () => {
-  //@ts-ignore
-  game = game(
+  game = Game(
     //@ts-ignore
     createPlayer("o", document.querySelector("#o-name").value),
     //@ts-ignore
-    createPlayer("x", document.querySelector("#x-name").value)
+    createPlayer("x", document.querySelector("#x-name").value),
+    board
   );
   //@ts-ignore
   document.querySelector(".welcome-screen").style.display = "none";
