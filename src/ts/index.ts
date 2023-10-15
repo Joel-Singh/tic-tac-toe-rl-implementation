@@ -5,13 +5,14 @@ const board = Board()
 
 let game;
 
-(document.querySelector(".game-elements") as HTMLElement).style.display = "none";
-document.querySelector("#start-game").addEventListener("click", (e) => {
-  // @ts-ignore
+function startGame(e: Event) {
   game.start();
   (e.target as HTMLElement).style.display = "none";
   (document.querySelector("#winner-text") as HTMLElement).style.display = "none";
-});
+}
+
+(document.querySelector(".game-elements") as HTMLElement).style.display = "none";
+document.querySelector("#start-game").addEventListener("click", startGame);
 
 document.querySelector("#name-submission").addEventListener("click", () => {
   game = Game(
