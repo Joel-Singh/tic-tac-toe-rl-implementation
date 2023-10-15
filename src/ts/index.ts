@@ -5,17 +5,13 @@ const board = Board()
 
 let game;
 
-function setUpPage() {
-  (document.querySelector(".game-elements") as HTMLElement).style.display = "none";
-  document.querySelector("#start-game").addEventListener("click", (e) => {
-    // @ts-ignore
-    game.start();
-    (e.target as HTMLElement).style.display = "none";
-    (document.querySelector("#winner-text") as HTMLElement).style.display = "none";
-  });
-}
-
-setUpPage();
+(document.querySelector(".game-elements") as HTMLElement).style.display = "none";
+document.querySelector("#start-game").addEventListener("click", (e) => {
+  // @ts-ignore
+  game.start();
+  (e.target as HTMLElement).style.display = "none";
+  (document.querySelector("#winner-text") as HTMLElement).style.display = "none";
+});
 
 document.querySelector("#name-submission").addEventListener("click", () => {
   game = Game(
