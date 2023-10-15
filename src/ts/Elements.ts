@@ -20,3 +20,4 @@ export const  gameStartBtn = querySelectorWithError('#start-game') as HTMLElemen
 export const  oInput = querySelectorWithError("#welcome-screen__name-input__o") as HTMLInputElement
 export const  xInput = querySelectorWithError("#welcome-screen__name-input__x") as HTMLInputElement
 export const  welcomeScreenNameErrors = querySelectorWithError("#welcome-screen__name-errors") as HTMLInputElement
+export const  currentPlayerTurn = querySelectorWithError("#current-player-turn") as HTMLInputElement
