@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 cleanDistDir() {
+  mkdir -p ./dist/
   rm -rf ./dist/*
 }
 
