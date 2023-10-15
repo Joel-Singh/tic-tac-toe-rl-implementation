@@ -10,7 +10,8 @@ copyAllFilesExceptTsToDist() {
 }
 
 compileTsFiles() {
-  npx tsc
+  # Says its not installed when using 'npx tsc'
+  ./node_modules/typescript/bin/tsc
 }
 
 compilePug() {
