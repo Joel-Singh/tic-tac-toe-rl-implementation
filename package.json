@@ -2,19 +2,19 @@
   "name": "tic-tac-toe",
   "version": "1.0.0",
   "description": "",
-  "main": "script.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "./build.sh",
+    "build": "parcel build src/pug/index.pug",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d ./dist",
     "prestart": "npm run build",
-    "start": "http-server ./dist -c-1",
-    "start:dev": "nodemon --ext ts,css,html,pug,json --ignore './dist/*'  --exec 'npm run start'"
+    "start:dev": "parcel serve ./src/pug/index.pug"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@parcel/transformer-pug": "^2.10.0",
+    "parcel": "^2.10.0",
     "pug": "^3.0.2",
     "pug-cli": "^1.0.0-alpha6",
     "tsc": "^2.0.4",

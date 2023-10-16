@@ -30,10 +30,6 @@ input:active, button:active {
     background-color: #D0D0D0;
 }
 
-button:before {
-    content: url('icon.png');
-}
-
 svg {
   display: none;
 }
