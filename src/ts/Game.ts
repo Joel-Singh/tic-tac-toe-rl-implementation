@@ -9,7 +9,9 @@ export default function Game(oPlayer: PlayerType, xPlayer: PlayerType, board: Bo
     board.isFilled();
 
   async function playerTurn(player: PlayerType) {
+    currentPlayerTurn.textContent = `It's your turn, ${player.name}`
     await player.startTurn()
+    currentPlayerTurn.textContent = ''
   }
 
   const start = async () => {
