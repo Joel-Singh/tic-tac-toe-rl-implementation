@@ -1,19 +1,24 @@
 import { BoardType } from "./Board";
-import { winnerText } from "./Elements.js";
+import { currentPlayerTurn, winnerText } from "./Elements.js";
+import { PlayerType } from "./Player";
 
-export default function Game(oPlayer, xPlayer, board: BoardType) {
+export default function Game(oPlayer: PlayerType, xPlayer: PlayerType, board: BoardType) {
   const isGameDone = () =>
     board.isWinner(oPlayer.symbol) ||
     board.isWinner(xPlayer.symbol) ||
     board.isFilled();
 
+  async function playerTurn(player: PlayerType) {
+    await player.startTurn()
+  }
+
   const start = async () => {
     while (true) {
-      await oPlayer.startTurn();
+      await playerTurn(oPlayer)
       if (isGameDone()) {
         break;
       }
-      await xPlayer.startTurn();
+      await playerTurn(xPlayer)
       if (isGameDone()) {
         break;
       }

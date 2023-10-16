@@ -36,3 +36,5 @@ export default function Player(symbol: 'o' | 'x', name, board: BoardType) {
   };
   return { symbol, name, startTurn };
 }
+
+export type PlayerType = ReturnType<typeof Player>;
