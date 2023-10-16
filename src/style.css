@@ -43,7 +43,6 @@ svg {
   grid-template: repeat(3, 1fr) / repeat(3, 1fr);
   height: 50vh;
   width: 50vh;
-  margin-top: -10vh;
 }
 
 #welcome-screen {
