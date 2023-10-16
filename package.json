@@ -9,6 +9,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d ./dist",
     "prestart": "npm run build",
+    "start": "http-server ./dist -c-1",
     "start:dev": "parcel serve"
   },
   "author": "",
