@@ -9,15 +9,15 @@ body {
 }
 
 input, button {
-    background-color: #F0F0F0;
-    border: none;
-    color: #333;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    font-weight: bold;
-    transition: background-color 0.3s ease-in-out;
-    padding: 10px 20px;
-    margin: 5px;
+  background-color: #F0F0F0;
+  border: none;
+  color: #333;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  font-weight: bold;
+  transition: background-color 0.3s ease-in-out;
+  padding: 10px 20px;
+  margin: 5px;
 }
 
 button {
@@ -27,11 +27,11 @@ button {
 }
 
 input:hover, button:hover {
-    background-color: #E0E0E0;
+  background-color: #E0E0E0;
 }
 
 input:active, button:active {
-    background-color: #D0D0D0;
+  background-color: #D0D0D0;
 }
 
 svg {
