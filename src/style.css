@@ -47,8 +47,8 @@ svg {
 
 #welcome-screen {
     display: grid;
-    grid-template-rows: 1fr 1fr;
-    margin-top: 10vh;
+    grid-template-rows: 1fr 1fr 30px;
+    margin-top: 20vh;
     height: 30vh;
     align-items: center;
     justify-content: center;
