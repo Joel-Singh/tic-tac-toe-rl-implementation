@@ -28,8 +28,8 @@ function intializeGame() {
   }
 
   game = Game(
-    Player("o", oInput.value, board),
-    Player("x", xInput.value, board),
+    Player("o", oInput.value.trim(), board),
+    Player("x", xInput.value.trim(), board),
     board
   );
   welcomeScreen.style.display = "none";
