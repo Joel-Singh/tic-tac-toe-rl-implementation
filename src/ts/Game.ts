@@ -35,7 +35,7 @@ export default function Game(oPlayer: PlayerType, xPlayer: PlayerType, board: Bo
       winnerText.innerHTML = "TIE!";
     }
     board.reset();
-    (document.querySelector("#start-game") as HTMLElement).style.display = "block";
+    (document.querySelector("#start-game") as HTMLElement).style.opacity = "1";
   };
   return { start };
 };

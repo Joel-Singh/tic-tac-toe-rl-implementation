@@ -63,11 +63,12 @@ svg {
 }
 
 #game-elements {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   height: 95vh;
-  flex-direction: column;
+
+  display: grid;
+  grid-template-rows: 30px min-content min-content 30px;
+  justify-content: center;
+  align-content: center;
 }
 
 .cell {

@@ -16,8 +16,8 @@ let game;
 
 function startGame(e: Event) {
   game.start();
-  gameStartBtn.style.display = "none";
-  (document.querySelector("#winner-text") as HTMLElement).style.display = "none";
+  gameStartBtn.style.opacity = "0";
+  (document.querySelector("#winner-text") as HTMLElement).textContent = "";
 }
 
 function intializeGame() {
@@ -33,7 +33,7 @@ function intializeGame() {
     board
   );
   welcomeScreen.style.display = "none";
-  gameElements.style.display = "flex";
+  gameElements.style.display = "grid";
 
 }
 
