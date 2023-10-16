@@ -69,6 +69,8 @@ svg {
   grid-template-rows: 30px min-content min-content 30px;
   justify-content: center;
   align-content: center;
+  align-items: center;
+  justify-items: center;
 }
 
 .cell {
