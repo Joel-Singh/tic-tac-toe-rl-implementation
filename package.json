@@ -2,13 +2,14 @@
   "name": "tic-tac-toe",
   "version": "1.0.0",
   "description": "",
+  "source": "./src/pug/index.pug",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "parcel build src/pug/index.pug",
+    "build": "parcel build",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d ./dist",
     "prestart": "npm run build",
-    "start:dev": "parcel serve ./src/pug/index.pug"
+    "start:dev": "parcel serve"
   },
   "author": "",
   "license": "ISC",
