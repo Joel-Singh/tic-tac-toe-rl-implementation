@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "rm -f ./dist/*",
     "prebuild": "npm run clean",
-    "build": "parcel build",
+    "build": "parcel build --public-url './'",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d ./dist",
     "prestart": "npm run build",
