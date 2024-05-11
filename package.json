@@ -12,7 +12,7 @@
     "deploy": "gh-pages -d ./dist",
     "prestart": "npm run build",
     "start": "http-server ./dist -c-1",
-    "start:dev": "parcel serve"
+    "start:dev": "parcel serve --no-cache"
   },
   "author": "",
   "license": "ISC",
