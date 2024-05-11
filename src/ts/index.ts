@@ -18,8 +18,8 @@ function startGame(e: Event) {
 
 function intializeGame() {
   game = Game(
-    Player("o", "User", board),
-    Player("x", "Reino", board),
+    Player(false, "o", "User", board),
+    Player(true, "x", "Reino", board),
     board
   );
   gameElements.style.display = "grid";

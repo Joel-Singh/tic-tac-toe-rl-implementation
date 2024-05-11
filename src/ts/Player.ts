@@ -1,6 +1,6 @@
 import { BoardType } from "./Board";
 
-export default function Player(symbol: 'o' | 'x', name, board: BoardType) {
+export default function Player(isAi: boolean, symbol: 'o' | 'x', name, board: BoardType) {
   const getEmptyCellArray = () => [
     ...document.querySelectorAll(".cell:not(.x):not(.o)"),
   ];
@@ -22,7 +22,7 @@ export default function Player(symbol: 'o' | 'x', name, board: BoardType) {
   }
 
   const startTurn = async () => {
-    return new Promise<void>((resolve) => {
+    const manualTurn = new Promise<void>((resolve) => {
       addClickEventToEmptyCells(handleCellClick)
 
       function handleCellClick(event: Event) {
@@ -33,6 +33,10 @@ export default function Player(symbol: 'o' | 'x', name, board: BoardType) {
         resolve();
       }
     })
+
+    const aiTurn = new Promise<void>((resolve) => {})
+
+    return isAi ? aiTurn : manualTurn;
   };
   return { symbol, name, startTurn };
 }
