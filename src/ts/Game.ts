@@ -34,7 +34,6 @@ export default function Game(oPlayer: PlayerType, xPlayer: PlayerType, board: Bo
     } else if (board.isFilled()) {
       winnerText.innerHTML = "TIE!";
     }
-    board.reset();
     (document.querySelector("#start-game") as HTMLElement).style.opacity = "1";
   };
   return { start };

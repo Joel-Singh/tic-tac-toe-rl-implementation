@@ -10,6 +10,7 @@ const board = Board()
 let game;
 
 function startGame(e: Event) {
+  board.reset();
   console.log("game starting");
   game.start();
   gameStartBtn.style.opacity = "0";
