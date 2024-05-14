@@ -1,39 +1,36 @@
 type possibleBoardStates = "empty" | "o" | "x"
 type BoardState = [ possibleBoardStates, possibleBoardStates, possibleBoardStates, possibleBoardStates, possibleBoardStates, possibleBoardStates, possibleBoardStates, possibleBoardStates, possibleBoardStates ]
 
-function Policy(state: BoardState, value: number) {
+// @ts-ignore
+function Policy(state: BoardState, value: number, possibleMoves: ReturnType<typeof Policy>[]) {
   return {
     state,
-    value
+    value,
+    possibleMoves
   }
 }
 
 type Policy = ReturnType<typeof Policy>
 
 // assume Reino always goes second and is x
-export function createPolicies() {
-  const policies: Policy[] = [];
+export function createAllPossiblePolicies() {
+  const initialPolicy = Policy(createEmptyBoardState(), 0, []);
 
-  function addPolicy(turnSymbol: possibleBoardStates, currentState: BoardState) {
-    if (isFull(currentState)) {
-      policies.push(Policy(currentState, 0));
-    } else {
-      for (let i = 0; i < 9; i++) {
-        if (currentState[i] === 'empty') {
-          currentState[i] = turnSymbol;
-          addPolicy(turnSymbol === 'x' ? 'o' : 'x', createCopy(currentState));
-          currentState[i] = 'empty';
-        }
+  function addPolicy(turnSymbol: possibleBoardStates, policy: Policy) {
+    const stateCopy = createCopy(policy.state)
+    for (let i = 0; i < 9; i++) {
+      if (policy.state[i] === 'empty') {
+        stateCopy[i] = turnSymbol;
+        const newPolicy = Policy(createCopy(stateCopy), 0, []);
+        policy.possibleMoves.push(newPolicy);
+        addPolicy(turnSymbol === 'x' ? 'o' : 'x', newPolicy);
+        stateCopy[i] = 'empty';
       }
     }
   }
 
-  addPolicy('o', createEmptyBoardState());
-  return policies
-
-  function isFull(boardState: BoardState) {
-    return !boardState.includes('empty');
-  }
+  addPolicy('o', initialPolicy);
+  return initialPolicy;
 
   function createCopy(boardState: BoardState): BoardState {
     return [

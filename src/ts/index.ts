@@ -5,7 +5,7 @@ import {
 } from "./Elements.js";
 import Game from "./Game.js";
 import Player from "./Player.js";
-import { createPolicies } from "./Policies.js";
+import { createAllPossiblePolicies } from "./Policies.js";
 const board = Board()
 
 let game;
@@ -30,4 +30,4 @@ function intializeGame() {
 gameStartBtn.addEventListener("click", startGame);
 intializeGame();
 
-console.dir(createPolicies());
+console.dir(createAllPossiblePolicies());
