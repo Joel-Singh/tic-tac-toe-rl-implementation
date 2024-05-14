@@ -17,14 +17,20 @@ export function createAllPossiblePolicies() {
   const initialPolicy = Policy(createEmptyBoardState(), 0, []);
 
   function addPolicy(turnSymbol: possibleBoardStates, policy: Policy) {
-    const stateCopy = createCopy(policy.state)
+    const newPolicyState = createCopy(policy.state)
     for (let i = 0; i < 9; i++) {
       if (policy.state[i] === 'empty') {
-        stateCopy[i] = turnSymbol;
-        const newPolicy = Policy(createCopy(stateCopy), 0, []);
+        newPolicyState[i] = turnSymbol;
+
+        const newPolicy = Policy(createCopy(newPolicyState), 0, []);
         policy.possibleMoves.push(newPolicy);
-        addPolicy(turnSymbol === 'x' ? 'o' : 'x', newPolicy);
-        stateCopy[i] = 'empty';
+
+        const notAWinner = !(isWinner(newPolicy.state, 'o') || isWinner(newPolicy.state, 'x'));
+        if (notAWinner) {
+          addPolicy(turnSymbol === 'x' ? 'o' : 'x', newPolicy);
+        }
+
+        newPolicyState[i] = 'empty';
       }
     }
   }
@@ -44,6 +50,28 @@ export function createAllPossiblePolicies() {
       boardState[7],
       boardState[8],
     ]
+  }
+
+  function isWinner(boardState: BoardState, symbol: possibleBoardStates) {
+    const check = (i) => boardState[i] === symbol;
+    const firstColCheck = check(0) && check(3) && check(6);
+    const secondColCheck = check(1) && check(4) && check(7);
+    const thirdColCheck = check(2) && check(5) && check(8);
+    const firstRowCheck = check(0) && check(1) && check(2);
+    const secondRowCheck = check(3) && check(4) && check(5);
+    const thirdRowCheck = check(6) && check(7) && check(8);
+    const firstDiagCheck = check(0) && check(4) && check(8);
+    const secondDiagCheck = check(2) && check(4) && check(6);
+    return (
+      firstColCheck ||
+      secondColCheck ||
+      thirdColCheck ||
+      firstRowCheck ||
+      secondRowCheck ||
+      thirdRowCheck ||
+      firstDiagCheck ||
+      secondDiagCheck
+    );
   }
 }
 
