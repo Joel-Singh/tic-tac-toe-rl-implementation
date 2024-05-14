@@ -1,9 +1,9 @@
 import { BoardType } from "./Board";
 
 export default function Player(isAi: boolean, symbol: 'o' | 'x', name, board: BoardType) {
-  const getEmptyCellArray = () => [
+  const getEmptyCellArray = (): HTMLElement[] => [
     ...document.querySelectorAll(".cell:not(.x):not(.o)"),
-  ];
+  ] as HTMLElement[];
 
   const getAllCellsArray = () => [
     ...document.querySelectorAll(".cell"),
@@ -22,8 +22,12 @@ export default function Player(isAi: boolean, symbol: 'o' | 'x', name, board: Bo
   }
 
   const startTurn = async () => {
-    const manualTurn = new Promise<void>((resolve) => {
+    return new Promise<void>((resolve) => {
       addClickEventToEmptyCells(handleCellClick)
+      if (isAi) {
+        const emptyCellArray = getEmptyCellArray();
+        emptyCellArray[Math.floor(Math.random() * emptyCellArray.length)].click();
+      }
 
       function handleCellClick(event: Event) {
         const cell = event.target as HTMLElement
@@ -33,10 +37,6 @@ export default function Player(isAi: boolean, symbol: 'o' | 'x', name, board: Bo
         resolve();
       }
     })
-
-    const aiTurn = new Promise<void>((resolve) => {})
-
-    return isAi ? aiTurn : manualTurn;
   };
   return { symbol, name, startTurn };
 }
