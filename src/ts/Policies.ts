@@ -23,9 +23,21 @@ export function createAllPossiblePolicies() {
         newPolicyState[i] = turnSymbol;
 
         const newPolicy = Policy(createCopy(newPolicyState), 0, []);
+
+        const xWinning = isWinner(newPolicyState, 'x');
+        const oWinning = isWinner(newPolicyState, 'o');
+
+        if (xWinning) {
+          newPolicy.value = 1;
+        } else if (oWinning) {
+          newPolicy.value = 0;
+        } else {
+          newPolicy.value = 0.5;
+        }
+
         policy.possibleMoves.push(newPolicy);
 
-        const notAWinner = !(isWinner(newPolicy.state, 'o') || isWinner(newPolicy.state, 'x'));
+        const notAWinner = !(xWinning || oWinning);
         if (notAWinner) {
           addPolicy(turnSymbol === 'x' ? 'o' : 'x', newPolicy);
         }
