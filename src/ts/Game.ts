@@ -1,6 +1,7 @@
 import { BoardType } from "./Board";
 import { currentPlayerTurn, winnerText } from "./Elements.js";
 import { PlayerType } from "./Player";
+import { createAllPossiblePolicies } from "./Policies";
 
 export default function Game(oPlayer: PlayerType, xPlayer: PlayerType, board: BoardType) {
   const isGameDone = () =>
@@ -15,12 +16,15 @@ export default function Game(oPlayer: PlayerType, xPlayer: PlayerType, board: Bo
   }
 
   const start = async () => {
+    let currentPolicy = createAllPossiblePolicies();
     while (true) {
       await playerTurn(oPlayer)
+      currentPolicy = currentPolicy.possibleMoves[board.getLastEditedIndex() - board.getFilledSquares() + 1]
       if (isGameDone()) {
         break;
       }
       await playerTurn(xPlayer)
+      currentPolicy = currentPolicy.possibleMoves[board.getLastEditedIndex() - board.getFilledSquares() + 1]
       if (isGameDone()) {
         break;
       }

@@ -52,8 +52,12 @@ export default function Board() {
     );
   };
 
+  let lastEditedIndex: number | null = null;
+  const getLastEditedIndex = () => lastEditedIndex;
+
   const editBoard = (index, symbol) => {
     gameBoard[index] = symbol;
+    lastEditedIndex = index;
     drawBoard();
   };
 
@@ -62,7 +66,11 @@ export default function Board() {
     drawBoard();
   };
 
-  return { isWinner, isFilled, editBoard, reset };
+  const getFilledSquares = () => {
+    return 9 - gameBoard.filter(v => v === 'empty').length;
+  }
+
+  return { isWinner, isFilled, editBoard, reset, getLastEditedIndex, getFilledSquares };
 };
 
 export type BoardType = ReturnType<typeof Board>;
