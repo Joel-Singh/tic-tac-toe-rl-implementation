@@ -29,5 +29,3 @@ function intializeGame() {
 
 gameStartBtn.addEventListener("click", startGame);
 intializeGame();
-
-console.dir(createAllPossiblePolicies());
