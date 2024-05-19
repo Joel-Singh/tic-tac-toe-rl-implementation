@@ -43,6 +43,8 @@ export function createAllPossiblePolicies() {
         }
 
         newPolicyState[i] = 'empty';
+      } else {
+        policy.possibleMoves.push(null);
       }
     }
   }

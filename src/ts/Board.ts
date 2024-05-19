@@ -66,11 +66,7 @@ export default function Board() {
     drawBoard();
   };
 
-  const getFilledSquares = () => {
-    return 9 - gameBoard.filter(v => v === 'empty').length;
-  }
-
-  return { isWinner, isFilled, editBoard, reset, getLastEditedIndex, getFilledSquares, gameBoard };
+  return { isWinner, isFilled, editBoard, reset, getLastEditedIndex, gameBoard };
 };
 
 export type BoardType = ReturnType<typeof Board>;

@@ -19,12 +19,12 @@ export default function Game(oPlayer: PlayerType, xPlayer: PlayerType, board: Bo
     let currentPolicy = createAllPossiblePolicies();
     while (true) {
       await playerTurn(oPlayer)
-      currentPolicy = getUpdatedPolicy(board, currentPolicy);
+      currentPolicy = currentPolicy.possibleMoves[board.getLastEditedIndex()];
       if (isGameDone()) {
         break;
       }
       await playerTurn(xPlayer)
-      currentPolicy = getUpdatedPolicy(board, currentPolicy);
+      currentPolicy = currentPolicy.possibleMoves[board.getLastEditedIndex()];
       if (isGameDone()) {
         break;
       }
