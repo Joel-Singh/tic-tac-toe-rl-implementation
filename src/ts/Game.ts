@@ -42,14 +42,3 @@ export default function Game(oPlayer: PlayerType, xPlayer: PlayerType, board: Bo
   };
   return { start };
 };
-
-function getUpdatedPolicy(board: BoardType, policy: Policy): Policy {
-  // Policy possible move list is in ascending order of index
-  let emptySpacesBeforeLastEditedIndex = 0;
-  for (let i = 0; i < board.getLastEditedIndex(); i++) {
-    if (board.gameBoard[i] !== 'empty')
-      emptySpacesBeforeLastEditedIndex++;
-  }
-
-  return policy.possibleMoves[board.getLastEditedIndex() - emptySpacesBeforeLastEditedIndex];
-}
