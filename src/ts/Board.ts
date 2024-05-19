@@ -70,7 +70,7 @@ export default function Board() {
     return 9 - gameBoard.filter(v => v === 'empty').length;
   }
 
-  return { isWinner, isFilled, editBoard, reset, getLastEditedIndex, getFilledSquares };
+  return { isWinner, isFilled, editBoard, reset, getLastEditedIndex, getFilledSquares, gameBoard };
 };
 
 export type BoardType = ReturnType<typeof Board>;

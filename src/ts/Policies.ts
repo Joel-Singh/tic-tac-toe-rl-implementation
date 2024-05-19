@@ -10,7 +10,7 @@ function Policy(state: BoardState, value: number, possibleMoves: ReturnType<type
   }
 }
 
-type Policy = ReturnType<typeof Policy>
+export type Policy = ReturnType<typeof Policy>
 
 // assume Reino always goes second and is x
 export function createAllPossiblePolicies() {
