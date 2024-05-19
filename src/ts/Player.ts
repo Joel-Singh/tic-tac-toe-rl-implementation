@@ -1,4 +1,5 @@
 import { BoardType } from "./Board";
+import { Policy } from "./Policies";
 
 export default function Player(isAi: boolean, symbol: 'o' | 'x', name, board: BoardType) {
   const getEmptyCellArray = (): HTMLElement[] => [
@@ -7,7 +8,7 @@ export default function Player(isAi: boolean, symbol: 'o' | 'x', name, board: Bo
 
   const getAllCellsArray = () => [
     ...document.querySelectorAll(".cell"),
-  ]
+  ] as HTMLElement[];
 
   function addClickEventToEmptyCells(clickEvent: EventListener) {
     getEmptyCellArray().forEach((cell) => {
@@ -21,12 +22,21 @@ export default function Player(isAi: boolean, symbol: 'o' | 'x', name, board: Bo
     );
   }
 
-  const startTurn = async () => {
+  const startTurn = async (policy: Policy, board: BoardType) => {
     return new Promise<void>((resolve) => {
       addClickEventToEmptyCells(handleCellClick)
       if (isAi) {
-        const emptyCellArray = getEmptyCellArray();
-        emptyCellArray[Math.floor(Math.random() * emptyCellArray.length)].click();
+        const allCellArray = getAllCellsArray();
+        const possibleNextMoves: Policy[] = policy.possibleMoves;
+
+        let indexOfHighestValueMove: number = 0;
+        for (let i = 1; i < possibleNextMoves.length; i++) {
+          const currentValue = possibleNextMoves[i]?.value ?? 0;
+          const highestValue = possibleNextMoves[indexOfHighestValueMove]?.value ?? 0;
+          indexOfHighestValueMove = currentValue > highestValue ? i : indexOfHighestValueMove;
+        }
+
+        allCellArray[indexOfHighestValueMove].click();
       }
 
       function handleCellClick(event: Event) {

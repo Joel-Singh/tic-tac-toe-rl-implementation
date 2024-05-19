@@ -9,21 +9,21 @@ export default function Game(oPlayer: PlayerType, xPlayer: PlayerType, board: Bo
     board.isWinner(xPlayer.symbol) ||
     board.isFilled();
 
-  async function playerTurn(player: PlayerType) {
+  async function playerTurn(player: PlayerType, policy: Policy) {
     currentPlayerTurn.textContent = `It's your turn, ${player.name}`
-    await player.startTurn()
+    await player.startTurn(policy, board);
     currentPlayerTurn.textContent = ''
   }
 
   const start = async () => {
     let currentPolicy = createAllPossiblePolicies();
     while (true) {
-      await playerTurn(oPlayer)
+      await playerTurn(oPlayer, currentPolicy)
       currentPolicy = currentPolicy.possibleMoves[board.getLastEditedIndex()];
       if (isGameDone()) {
         break;
       }
-      await playerTurn(xPlayer)
+      await playerTurn(xPlayer, currentPolicy)
       currentPolicy = currentPolicy.possibleMoves[board.getLastEditedIndex()];
       if (isGameDone()) {
         break;

@@ -6,7 +6,7 @@ function Policy(state: BoardState, value: number, possibleMoves: ReturnType<type
   return {
     state,
     value,
-    possibleMoves
+    possibleMoves: possibleMoves as ReturnType<typeof Policy>[]
   }
 }
 
