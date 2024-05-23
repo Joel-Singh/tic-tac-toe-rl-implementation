@@ -18,7 +18,7 @@ function Policy(state: BoardState, value: number, possibleMoves: ReturnType<type
 export type Policy = ReturnType<typeof Policy>
 ```
 
-Here is how I create all possible policies. Recursively as a tree.
+Here is how I create all possible policies. Recursively as a tree. Reino represents the rl player.
 ```typescript
 // assume Reino always goes second and is x
 export function createAllPossiblePolicies() {
