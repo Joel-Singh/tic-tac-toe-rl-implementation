@@ -2,7 +2,7 @@
 Created the extended tic tac toe reinforcement learning example from the Barto and Sutton reinforcement learning book in typescript. The reinforcement learning was added on top of my past project, which was just a regular tic tac toe game: https://github.com/Joel-Singh/tic-tac-toe
 
 # How it works
-The reinforcement learning happens as you play games and the policies are reset when the page is refreshed. Exploration wasn't implemented, so it plays maximally greedy. The value of winning states are 1, losing states are 0, and everything else is 0.5. Try playing the same first couple of moves and see how it learns.
+Creates a list of all possible states attaching a value to each (i.e a policy.) Default values of 1, 0, and 0.5 for winning, losing, and all other states respectively. After each move, the value of every state is updated, bringing it closer to the value of the proceeding state. Try playing the same first couple of moves and see how it learns.
 
 # Interesting code snippets
 Implementation of a policy type. Each policy also keeps track of the possible next policies from it.
